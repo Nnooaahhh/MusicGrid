@@ -58,6 +58,7 @@
             border-radius: 5px;
             grid-column: span 1;
             grid-row: span 1;
+            overflow: hidden;
         }
         input {
             border: none;
@@ -88,39 +89,53 @@
         <div class="category">Green Day</div>
 
         <div class="category">Rock</div>
-        <div class="cell"><input type="text" placeholder="Enter Answer">Smells Like Teen Spirit</div>
-        <div class="cell"><input type="text" placeholder="Enter Answer">Sweet Child o' Mine</div>
-        <div class="cell"><input type="text" placeholder="Enter Answer">Basket Case</div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Smells Like Teen Spirit</div></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Sweet Child o' Mine</div></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Basket Case</div></div>
 
         <div class="category">Pop</div>
-        <div class="cell"><input type="text" placeholder="Enter Answer">Billie Jean</div>
-        <div class="cell"><input type="text" placeholder="Enter Answer">Like a Virgin</div>
-        <div class="cell"><input type="text" placeholder="Enter Answer">Thriller</div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Billie Jean</div></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Like a Virgin</div></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Thriller</div></div>
 
         <div class="category">Hip-Hop</div>
-        <div class="cell"><input type="text" placeholder="Enter Answer">Lose Yourself</div>
-        <div class="cell"><input type="text" placeholder="Enter Answer">Empire State of Mind</div>
-        <div class="cell"><input type="text" placeholder="Enter Answer">Sicko Mode</div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Lose Yourself</div></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Empire State of Mind</div></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Sicko Mode</div></div>
     </div>
     <button id="checkButton">Check Answers</button>
     <script>
-        const boxes = document.querySelectorAll('.cell');
+        const cells = document.querySelectorAll('.cell');
+        const checkButton = document.getElementById('checkButton');
+
+        // Initially hide the answers
+        cells.forEach(cell => {
+            const answerDiv = cell.querySelector('.answer');
+            answerDiv.style.display = 'none';
+        });
 
         // Function to check answers
-        document.getElementById('checkButton').addEventListener('click', () => {
+        checkButton.addEventListener('click', () => {
             let isAllCorrect = true;
-            for (let i = 0; i < boxes.length; i++) {
-                const userInput = boxes[i].querySelector('input').value.trim();
+            cells.forEach(cell => {
+                const input = cell.querySelector('input');
+                const answerDiv = cell.querySelector('.answer');
+                const userInput = input.value.trim();
+
+                // Show the answer and style
+                answerDiv.style.display = 'block';
+
                 if (userInput === '') {
-                    boxes[i].style.backgroundColor = 'transparent';
+                    cell.style.backgroundColor = 'transparent';
                 } else {
-                    boxes[i].style.backgroundColor = '#fff';
+                    cell.style.backgroundColor = '#fff';
                 }
                 if (userInput === '') {
                     isAllCorrect = false;
-                    boxes[i].style.backgroundColor = '#f77';
+                    cell.style.backgroundColor = '#f77';
                 }
-            }
+            });
+
             if (isAllCorrect) {
                 alert('Congratulations! You have completed the grid.');
             } else {
