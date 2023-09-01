@@ -34,8 +34,6 @@
             background-color: #fff;
             color: #333;
             border-radius: 5px;
-            grid-column: 1 / span 1;
-            grid-row: span 1;
         }
         .category {
             font-weight: bold;
@@ -44,8 +42,6 @@
             color: #fff;
             text-align: center;
             border-radius: 5px;
-            grid-column: span 1;
-            grid-row: span 1;
         }
         .cell {
             border: 1px solid #ccc;
@@ -56,8 +52,6 @@
             background-color: #fff;
             color: #333;
             border-radius: 5px;
-            grid-column: span 1;
-            grid-row: span 1;
             overflow: hidden;
         }
         input {
@@ -65,83 +59,59 @@
             outline: none;
             width: 100%;
         }
-        #checkButton {
-            background-color: #333;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-        #checkButton:hover {
-            background-color: #555;
-        }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Grid 1 -->
         <div class="empty-box"></div>
         <div class="category">90's</div>
+        <div class="category">Rock</div>
+        <div class="category">Green Day</div>
+
+        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Basket Case</div></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Smells Like Teen Spirit</div></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Wonderwall</div></div>
+
+        <!-- Grid 2 -->
+        <div class="empty-box"></div>
         <div class="category">80's</div>
+        <div class="category">Pop</div>
         <div class="category">Ed Sheeran</div>
 
-        <div class="category">Rock</div>
-        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Under the bridge</div></div>
-        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Paradise City</div></div>
-        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Blow</div></div>
-
-        <div class="category">Pop</div>
         <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Billie Jean</div></div>
         <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Like a Virgin</div></div>
         <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Bad Habits</div></div>
 
+        <!-- Grid 3 -->
+        <div class="empty-box"></div>
         <div class="category">Hip-Hop</div>
+        <div class="category">90's</div>
+        <div class="category">Classic</div>
+
         <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Lose Yourself</div></div>
-        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Empire State of Mind</div></div>
-        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">You Need Me, I Don't Need You</div></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">My Name Is</div></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Hotel California</div></div>
+
+        <!-- Grid 4 -->
+        <div class="empty-box"></div>
+        <div class="category">Rock</div>
+        <div class="category">70's</div>
+        <div class="category">Pop</div>
+
+        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Bohemian Rhapsody</div></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Imagine</div></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Dancing Queen</div></div>
+
+        <!-- Grid 5 -->
+        <div class="empty-box"></div>
+        <div class="category">2000s</div>
+        <div class="category">Rap</div>
+        <div class="category">80's</div>
+
+        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Stan</div></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Without Me</div></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Another One Bites the Dust</div></div>
     </div>
-    <button id="checkButton">Check Answers</button>
-    <script>
-        const cells = document.querySelectorAll('.cell');
-        const checkButton = document.getElementById('checkButton');
-
-        // Initially hide the answers
-        cells.forEach(cell => {
-            const answerDiv = cell.querySelector('.answer');
-            answerDiv.style.display = 'none';
-        });
-
-        // Function to check answers
-        checkButton.addEventListener('click', () => {
-            let isAllCorrect = true;
-            cells.forEach(cell => {
-                const input = cell.querySelector('input');
-                const answerDiv = cell.querySelector('.answer');
-                const userInput = input.value.trim();
-
-                // Show the answer and style
-                answerDiv.style.display = 'block';
-
-                if (userInput === '') {
-                    cell.style.backgroundColor = 'transparent';
-                } else {
-                    cell.style.backgroundColor = '#fff';
-                }
-                if (userInput === '') {
-                    isAllCorrect = false;
-                    cell.style.backgroundColor = '#f77';
-                }
-            });
-
-            if (isAllCorrect) {
-                alert('Congratulations! You have completed the grid.');
-            } else {
-                alert('Some answers are missing. Please fill in all the boxes.');
-            }
-        });
-    </script>
 </body>
 </html>
