@@ -7,16 +7,31 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
         .container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(4, 1fr);
-            gap: 10px;
-            text-align: center;
+            grid-gap: 10px;
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .category {
             font-weight: bold;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
         }
         .cell {
             border: 1px solid #ccc;
@@ -24,85 +39,72 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            background-color: #fff;
+            color: #333;
+            border-radius: 5px;
+        }
+        input {
+            border: none;
+            outline: none;
+            width: 100%;
+        }
+        #checkButton {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        #checkButton:hover {
+            background-color: #555;
         }
     </style>
 </head>
 <body>
-    <h1>Music Grid Game</h1>
     <div class="container">
         <div class="category"></div>
         <div class="category">90's</div>
         <div class="category">80's</div>
         <div class="category">Green Day</div>
-        <div class="cell" id="box1"></div>
-        <div class="cell" id="box2"></div>
-        <div class="cell" id="box3"></div>
+        <div class="cell"><input type="text" placeholder="Enter Song"></div>
+        <div class="cell"><input type="text" placeholder="Enter Song"></div>
+        <div class="cell"><input type="text" placeholder="Enter Song"></div>
         <div class="category">Rock</div>
-        <div class="cell" id="box4"></div>
-        <div class="cell" id="box5"></div>
-        <div class="cell" id="box6"></div>
+        <div class="cell"><input type="text" placeholder="Enter Song"></div>
+        <div class="cell"><input type="text" placeholder="Enter Song"></div>
+        <div class="cell"><input type="text" placeholder="Enter Song"></div>
         <div class="category">Pop</div>
-        <div class="cell" id="box7"></div>
-        <div class="cell" id="box8"></div>
-        <div class="cell" id="box9"></div>
+        <div class="cell"><input type="text" placeholder="Enter Song"></div>
+        <div class="cell"><input type="text" placeholder="Enter Song"></div>
+        <div class="cell"><input type="text" placeholder="Enter Song"></div>
     </div>
     <button id="checkButton">Check Answers</button>
     <script>
         const boxes = document.querySelectorAll('.cell');
-        const categories = ['90\'s', '80\'s', 'Green Day', 'Rock', 'Pop', 'Hip-Hop'];
-
-        // Shuffle the categories randomly
-        const shuffledCategories = shuffleArray(categories);
-
-        // Correct answers for each box
-        const correctAnswers = [
-            ['Basket Case', 'Billie Jean', 'Smells Like Teen Spirit'],
-            ['Thriller', 'Bohemian Rhapsody', 'Livin\' on a Prayer'],
-            ['Without Me', 'Lose Yourself', 'Sicko Mode']
-        ];
-
-        // Assign categories to the top labels
-        for (let i = 0; i < 3; i++) {
-            document.querySelectorAll('.category')[i + 1].textContent = shuffledCategories[i];
-        }
-
-        // Assign categories to the side labels and create input boxes
-        for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 3; j++) {
-                boxes[i * 3 + j].textContent = shuffledCategories[i + 3];
-                boxes[i * 3 + j].innerHTML += '<input type="text" placeholder="Enter Song">';
-            }
-        }
-
-        // Function to shuffle an array randomly
-        function shuffleArray(array) {
-            const shuffled = [...array];
-            for (let i = shuffled.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-            }
-            return shuffled;
-        }
 
         // Function to check answers
         document.getElementById('checkButton').addEventListener('click', () => {
             let isAllCorrect = true;
-            for (let i = 0; i < 3; i++) {
-                for (let j = 0; j < 3; j++) {
-                    const userInput = boxes[i * 3 + j].querySelector('input').value.trim();
-                    const correctAnswer = correctAnswers[i][j];
-                    if (userInput !== correctAnswer) {
-                        isAllCorrect = false;
-                        boxes[i * 3 + j].style.backgroundColor = 'red';
-                    } else {
-                        boxes[i * 3 + j].style.backgroundColor = 'green';
-                    }
+            for (let i = 0; i < boxes.length; i++) {
+                const userInput = boxes[i].querySelector('input').value.trim();
+                if (userInput === '') {
+                    boxes[i].style.backgroundColor = 'transparent';
+                } else {
+                    boxes[i].style.backgroundColor = '#fff';
+                }
+                if (userInput === '') {
+                    isAllCorrect = false;
+                    boxes[i].style.backgroundColor = '#f77';
                 }
             }
             if (isAllCorrect) {
-                alert('Congratulations! You got all the answers correct.');
+                alert('Congratulations! You have completed the grid.');
             } else {
-                alert('Some answers are incorrect. Try again.');
+                alert('Some answers are missing. Please fill in all the boxes.');
             }
         });
     </script>
