@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Grid Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .category {
+            font-weight: bold;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+        }
+        .cell {
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            color: #333;
+        }
+        input {
+            border: none;
+            outline: none;
+            width: 100%;
+        }
+        #checkButton {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        #checkButton:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Music Grid Game</h1>
+    <div class="container">
+        <div class="category"></div>
+        <div class="category">90's</div>
+        <div class="category">80's</div>
+        <div class="category">Green Day</div>
+        <div class="cell"><input type="text" placeholder="Enter Song"></div>
+        <div class="cell"><input type="text" placeholder="Enter Song"></div>
+        <div class="cell"><input type="text" placeholder="Enter Song"></div>
+        <div class="category">Rock</div>
+        <div class="cell"><input type="text" placeholder="Enter Song"></div>
+        <div class="cell"><input type="text" placeholder="Enter Song"></div>
+        <div class="cell"><input type="text" placeholder="Enter Song"></div>
+        <div class="category">Pop</div>
+        <div class="cell"><input type="text" placeholder="Enter Song"></div>
+        <div class="cell"><input type="text" placeholder="Enter Song"></div>
+        <div class="cell"><input type="text" placeholder="Enter Song"></div>
+    </div>
+    <button id="checkButton">Check Answers</button>
+    <script>
+        const boxes = document.querySelectorAll('.cell');
+
+        // Function to check answers
+        document.getElementById('checkButton').addEventListener('click', () => {
+            let isAllCorrect = true;
+            for (let i = 0; i < boxes.length; i++) {
+                const userInput = boxes[i].querySelector('input').value.trim();
+                if (userInput === '') {
+                    boxes[i].style.backgroundColor = 'transparent';
+                } else {
+                    boxes[i].style.backgroundColor = '#fff';
+                }
+                if (userInput !== '') {
+                    isAllCorrect = false;
+                    boxes[i].style.backgroundColor = '#f77';
+                }
+            }
+            if (isAllCorrect) {
+                alert('Congratulations! You have completed the grid.');
+            } else {
+                alert('Some answers are missing. Please fill in all the boxes.');
+            }
+        });
+    </script>
+</body>
+</html>
