@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Grid Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: auto 1fr 1fr 1fr;
+            grid-template-rows: auto 1fr 1fr 1fr;
+            gap: 10px;
+            text-align: center;
+        }
+        .category {
+            font-weight: bold;
+        }
+        .cell {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Music Grid Game</h1>
+    <div class="container">
+        <div class="cell"></div>
+        <div class="category">90's</div>
+        <div class="category">80's</div>
+        <div class="category">Green Day</div>
+        <div class="category">Rock</div>
+        <div class="cell" id="box1"></div>
+        <div class="cell" id="box2"></div>
+        <div class="cell" id="box3"></div>
+        <div class="category">Pop</div>
+        <div class="cell" id="box4"></div>
+        <div class="cell" id="box5"></div>
+        <div class="cell" id="box6"></div>
+        <div class="category">Hip-Hop</div>
+        <div class="cell" id="box7"></div>
+        <div class="cell" id="box8"></div>
+        <div class="cell" id="box9"></div>
+    </div>
+    <button id="checkButton">Check Answers</button>
+    <script>
+        const boxes = document.querySelectorAll('.cell');
+        const categories = ['90\'s', '80\'s', 'Green Day', 'Rock', 'Pop', 'Hip-Hop'];
+
+        // Shuffle the categories randomly
+        const shuffledCategories = shuffleArray(categories);
+
+        // Correct answers for each box
+        const correctAnswers = [
+            ['Basket Case', 'Billie Jean', 'Smells Like Teen Spirit'],
+            ['Thriller', 'Bohemian Rhapsody', 'Livin\' on a Prayer'],
+            ['Without Me', 'Lose Yourself', 'Sicko Mode']
+        ];
+
+        // Assign categories to the top and side labels
+        for (let i = 0; i < 3; i++) {
+            boxes[i + 1].textContent = shuffledCategories[i];
+            boxes[i * 3 + 3].textContent = shuffledCategories[i + 3];
+        }
+
+        // Function to shuffle an array randomly
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        // Function to check answers
+        document.getElementById('checkButton').addEventListener('click', () => {
+            let isAllCorrect = true;
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    const userInput = document.getElementById(`box${i * 3 + j + 1}`).textContent.trim();
+                    const correctAnswer = correctAnswers[i][j];
+                    if (userInput !== correctAnswer) {
+                        isAllCorrect = false;
+                        boxes[i * 3 + j + 1].style.backgroundColor = 'red';
+                    } else {
+                        boxes[i * 3 + j + 1].style.backgroundColor = 'green';
+                    }
+                }
+            }
+            if (isAllCorrect) {
+                alert('Congratulations! You got all the answers correct.');
+            } else {
+                alert('Some answers are incorrect. Try again.');
+            }
+        });
+    </script>
+</body>
+</html>
