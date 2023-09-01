@@ -16,7 +16,7 @@
         }
         .container {
             display: grid;
-            grid-template-columns: auto repeat(3, 1fr);
+            grid-template-columns: auto repeat(4, 1fr);
             grid-gap: 10px;
             max-width: 800px;
             width: 100%;
@@ -34,7 +34,8 @@
             background-color: #fff;
             color: #333;
             border-radius: 5px;
-            visibility: hidden;
+            grid-column: span 1;
+            grid-row: span 1;
         }
         .category {
             font-weight: bold;
@@ -43,6 +44,8 @@
             color: #fff;
             text-align: center;
             border-radius: 5px;
+            grid-column: span 1;
+            grid-row: span 1;
         }
         .cell {
             border: 1px solid #ccc;
@@ -53,6 +56,8 @@
             background-color: #fff;
             color: #333;
             border-radius: 5px;
+            grid-column: span 1;
+            grid-row: span 1;
             overflow: hidden;
         }
         input {
@@ -60,14 +65,47 @@
             outline: none;
             width: 100%;
         }
-        #timer1, #timer2, #timer3, #timer4, #timer5 {
+        #checkButton {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
             font-weight: bold;
-            text-align: center;
-            margin-bottom: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        #checkButton:hover {
+            background-color: #555;
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <div class="empty-box"></div>
+        <div class="category">Top Category 1</div>
+        <div class="category">Top Category 2</div>
+        <div class="category">Top Category 3</div>
+
+        <div class="category">Side Category 2</div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"></div>
+
+        <div class="category">Side Category 3</div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"></div>
+
+        <div class="category">Side Category 4</div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"></div>
+    </div>
+    <button id="checkButton">Check Answers</button>
+</body>
+</html>
     <div class="container">
         <!-- Timer for Grid 1 -->
         <div id="timer1"></div>
