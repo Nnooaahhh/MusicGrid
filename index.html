@@ -10,8 +10,8 @@
         }
         .container {
             display: grid;
-            grid-template-columns: auto 1fr 1fr 1fr;
-            grid-template-rows: auto 1fr 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(4, 1fr);
             gap: 10px;
             text-align: center;
         }
@@ -21,25 +21,27 @@
         .cell {
             border: 1px solid #ccc;
             padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 </head>
 <body>
     <h1>Music Grid Game</h1>
     <div class="container">
-        <div class="cell"></div>
+        <div class="category"></div>
         <div class="category">90's</div>
         <div class="category">80's</div>
         <div class="category">Green Day</div>
-        <div class="category">Rock</div>
         <div class="cell" id="box1"></div>
         <div class="cell" id="box2"></div>
         <div class="cell" id="box3"></div>
-        <div class="category">Pop</div>
+        <div class="category">Rock</div>
         <div class="cell" id="box4"></div>
         <div class="cell" id="box5"></div>
         <div class="cell" id="box6"></div>
-        <div class="category">Hip-Hop</div>
+        <div class="category">Pop</div>
         <div class="cell" id="box7"></div>
         <div class="cell" id="box8"></div>
         <div class="cell" id="box9"></div>
@@ -59,10 +61,17 @@
             ['Without Me', 'Lose Yourself', 'Sicko Mode']
         ];
 
-        // Assign categories to the top and side labels
+        // Assign categories to the top labels
         for (let i = 0; i < 3; i++) {
-            boxes[i + 1].textContent = shuffledCategories[i];
-            boxes[i * 3 + 3].textContent = shuffledCategories[i + 3];
+            document.querySelectorAll('.category')[i + 1].textContent = shuffledCategories[i];
+        }
+
+        // Assign categories to the side labels and create input boxes
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                boxes[i * 3 + j].textContent = shuffledCategories[i + 3];
+                boxes[i * 3 + j].innerHTML += '<input type="text" placeholder="Enter Song">';
+            }
         }
 
         // Function to shuffle an array randomly
@@ -80,13 +89,13 @@
             let isAllCorrect = true;
             for (let i = 0; i < 3; i++) {
                 for (let j = 0; j < 3; j++) {
-                    const userInput = document.getElementById(`box${i * 3 + j + 1}`).textContent.trim();
+                    const userInput = boxes[i * 3 + j].querySelector('input').value.trim();
                     const correctAnswer = correctAnswers[i][j];
                     if (userInput !== correctAnswer) {
                         isAllCorrect = false;
-                        boxes[i * 3 + j + 1].style.backgroundColor = 'red';
+                        boxes[i * 3 + j].style.backgroundColor = 'red';
                     } else {
-                        boxes[i * 3 + j + 1].style.backgroundColor = 'green';
+                        boxes[i * 3 + j].style.backgroundColor = 'green';
                     }
                 }
             }
