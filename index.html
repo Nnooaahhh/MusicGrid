@@ -59,59 +59,85 @@
             outline: none;
             width: 100%;
         }
+        #timer1, #timer2, #timer3, #timer4, #timer5 {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Grid 1 -->
-        <div class="empty-box"></div>
-        <div class="category">90's</div>
-        <div class="category">Rock</div>
-        <div class="category">Green Day</div>
+        <!-- Timer for Grid 1 -->
+        <div id="timer1"></div>
+        
+        <!-- Grid 1 - Available immediately -->
+        <div class="grid" id="grid1">
+            <div class="category">90's</div>
+            <div class="category">Rock</div>
+            <div class="category">Green Day</div>
 
-        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Basket Case</div></div>
-        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Smells Like Teen Spirit</div></div>
-        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Wonderwall</div></div>
+            <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Basket Case</div></div>
+            <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Smells Like Teen Spirit</div></div>
+            <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Wonderwall</div></div>
+        </div>
 
-        <!-- Grid 2 -->
-        <div class="empty-box"></div>
-        <div class="category">80's</div>
-        <div class="category">Pop</div>
-        <div class="category">Ed Sheeran</div>
+        <!-- Timer for Grid 2 -->
+        <div id="timer2"></div>
 
-        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Billie Jean</div></div>
-        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Like a Virgin</div></div>
-        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Bad Habits</div></div>
+        <!-- Grid 2 - Available after 1 hour -->
+        <div class="grid" id="grid2">
+            <div class="category">80's</div>
+            <div class="category">Pop</div>
+            <div class="category">Ed Sheeran</div>
 
-        <!-- Grid 3 -->
-        <div class="empty-box"></div>
-        <div class="category">Hip-Hop</div>
-        <div class="category">90's</div>
-        <div class="category">Classic</div>
+            <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Billie Jean</div></div>
+            <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Like a Virgin</div></div>
+            <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Bad Habits</div></div>
+        </div>
 
-        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Lose Yourself</div></div>
-        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">My Name Is</div></div>
-        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Hotel California</div></div>
+        <!-- Timer for Grid 3 -->
+        <div id="timer3"></div>
 
-        <!-- Grid 4 -->
-        <div class="empty-box"></div>
-        <div class="category">Rock</div>
-        <div class="category">70's</div>
-        <div class="category">Pop</div>
+        <!-- Grid 3 - Available after 2 hours -->
+        <div class="grid" id="grid3">
+            <div class="category">Hip-Hop</div>
+            <div class="category">90's</div>
+            <div class="category">Classic</div>
 
-        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Bohemian Rhapsody</div></div>
-        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Imagine</div></div>
-        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Dancing Queen</div></div>
+            <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Lose Yourself</div></div>
+            <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">My Name Is</div></div>
+            <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Hotel California</div></div>
+        </div>
 
-        <!-- Grid 5 -->
-        <div class="empty-box"></div>
-        <div class="category">2000s</div>
-        <div class="category">Rap</div>
-        <div class="category">80's</div>
+        <!-- Timer for Grid 4 -->
+        <div id="timer4"></div>
 
-        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Stan</div></div>
-        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Without Me</div></div>
-        <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Another One Bites the Dust</div></div>
+        <!-- Grid 4 - Available after 3 hours -->
+        <div class="grid" id="grid4">
+            <div class="category">Rock</div>
+            <div class="category">70's</div>
+            <div class="category">Pop</div>
+
+            <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Bohemian Rhapsody</div></div>
+            <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Imagine</div></div>
+            <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Stayin' Alive</div></div>
+        </div>
+
+        <!-- Timer for Grid 5 -->
+        <div id="timer5"></div>
+
+        <!-- Grid 5 - Available after 4 hours -->
+        <div class="grid" id="grid5">
+            <div class="category">2000s</div>
+            <div class="category">Rap</div>
+            <div class="category">80's</div>
+
+            <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Stan</div></div>
+            <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Without Me</div></div>
+            <div class="cell"><input type="text" placeholder="Enter Answer"><div class="answer">Another One Bites the Dust</div></div>
+        </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
