@@ -16,14 +16,26 @@
         }
         .container {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: auto repeat(3, 1fr);
             grid-gap: 10px;
-            max-width: 600px;
+            max-width: 800px;
             width: 100%;
             padding: 20px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .empty-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            color: #333;
+            border-radius: 5px;
+            grid-column: 1 / span 1;
+            grid-row: span 1;
         }
         .category {
             font-weight: bold;
@@ -32,6 +44,8 @@
             color: #fff;
             text-align: center;
             border-radius: 5px;
+            grid-column: span 1;
+            grid-row: span 1;
         }
         .cell {
             border: 1px solid #ccc;
@@ -42,6 +56,8 @@
             background-color: #fff;
             color: #333;
             border-radius: 5px;
+            grid-column: span 1;
+            grid-row: span 1;
         }
         input {
             border: none;
@@ -66,24 +82,25 @@
 </head>
 <body>
     <div class="container">
-        <div class="category">90's</div>
-        <div class="category">80's</div>
-        <div class="category">Green Day</div>
-        <div class="category">Category 4</div>
-        <div class="cell"><input type="text" placeholder="Enter Song"></div>
-        <div class="cell"><input type="text" placeholder="Enter Song"></div>
-        <div class="cell"><input type="text" placeholder="Enter Song"></div>
-        <div class="cell"><input type="text" placeholder="Enter Song"></div>
-        <div class="category">Rock</div>
-        <div class="cell"><input type="text" placeholder="Enter Song"></div>
-        <div class="cell"><input type="text" placeholder="Enter Song"></div>
-        <div class="cell"><input type="text" placeholder="Enter Song"></div>
-        <div class="cell"><input type="text" placeholder="Enter Song"></div>
-        <div class="category">Pop</div>
-        <div class="cell"><input type="text" placeholder="Enter Song"></div>
-        <div class="cell"><input type="text" placeholder="Enter Song"></div>
-        <div class="cell"><input type="text" placeholder="Enter Song"></div>
-        <div class="cell"><input type="text" placeholder="Enter Song"></div>
+        <div class="empty-box"></div>
+        <div class="category">Top Category 1</div>
+        <div class="category">Top Category 2</div>
+        <div class="category">Top Category 3</div>
+
+        <div class="category">Side Category 2</div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"></div>
+
+        <div class="category">Side Category 3</div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"></div>
+
+        <div class="category">Side Category 4</div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"></div>
+        <div class="cell"><input type="text" placeholder="Enter Answer"></div>
     </div>
     <button id="checkButton">Check Answers</button>
     <script>
